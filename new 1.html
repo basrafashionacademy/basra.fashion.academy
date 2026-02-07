@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إدارة المسجلين</title>
+<style>
+body{font-family:Tahoma,Arial;background:#f7f4f2;margin:0;padding:20px;}
+h2{color:#5a3d3d;text-align:center;margin-bottom:20px;}
+table{width:100%;border-collapse:collapse;background:#fff;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+th,td{border:1px solid #ccc;padding:10px;text-align:center;}
+th{background:#5a3d3d;color:#fff;}
+tr:nth-child(even){background:#f1e6e6;}
+.back-link{margin-top:15px;text-align:center;}
+.back-link a{text-decoration:none;color:#5a3d3d;}
+.back-link a:hover{text-decoration:underline;}
+@media(max-width:480px){table,th,td{font-size:14px;}}
+</style>
+</head>
+<body>
+
+<h2>قائمة المسجلين في الكورسات</h2>
+
+<table>
+  <thead>
+    <tr><th>الاسم</th><th>البريد الإلكتروني</th><th>الهاتف</th><th>الكورس</th></tr>
+  </thead>
+  <tbody id="regTable"></tbody>
+</table>
+
+<div class="back-link">
+  <a href="course-registration.html">⬅ العودة لتسجيل الكورسات</a>
+</div>
+
+<script>
+const registrations = JSON.parse(localStorage.getItem("registrations") || "[]");
+const tbody = document.getElementById("regTable");
+registrations.forEach(r=>{
+  const row = document.createElement("tr");
+  row.innerHTML=`<td>${r.name}</td><td>${r.email}</td><td>${r.phone}</td><td>${r.course}</td>`;
+  tbody.appendChild(row);
+});
+</script>
+
+</body>
+</html>

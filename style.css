@@ -1,0 +1,166 @@
+/* خطوط وألوان عامة */
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffeef4; /* وردي فاتح جدًا */
+  color: #333;
+}
+
+a { text-decoration: none; color: inherit; }
+
+h2, h3 { margin: 0; color: #d63384; } /* لون عنابي هادئ للعناوين */
+
+/* العنوان + صورة الأكاديمية */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #ffd7eb; /* وردي فاتح للخلفية */
+  border-radius: 0 0 20px 20px;
+  gap: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.header img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.header h1 { font-size: 28px; color: #b82870; }
+
+/* الواجهة الجانبية + المحتوى */
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* القوائم الجانبية */
+.sidebar {
+  width: 220px;
+  background: #fff0f8; /* وردي فاتح جدًا */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  padding: 10px;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  background: #ffb6c1; /* وردي فاتح */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: right;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar button:hover { 
+  background: #ff8fa3; 
+  transform: translateX(-3px);
+}
+
+/* المحتوى الرئيسي */
+.content {
+  flex: 1;
+  background: #fff0f8; /* وردي فاتح */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.section {
+  display: none; /* مخفي بشكل افتراضي */
+}
+
+.section.active { display: block; }
+
+/* الكورسات */
+.course-card {
+  background: #fff5f8;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.course-card h3 { color: #d63384; }
+
+.course-card ul { padding-left: 20px; margin: 10px 0; }
+.course-card ul li { margin-bottom: 5px; }
+
+/* grid للصور أعمال المتدربين والمعرض */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.grid img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* نموذج التواصل */
+.contact-box input, .contact-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: 1px solid #ffb6c1;
+  background: #fff0f8;
+  resize: vertical;
+}
+
+.contact-box button {
+  padding: 10px 15px;
+  background: #d63384;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.contact-box button:hover { background: #b82870; }
+
+/* responsive */
+@media (max-width: 900px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; display: flex; gap: 10px; flex-wrap: wrap; }
+  .sidebar button { flex: 1; }
+}
+/* تأثير أزرار التواصل */
+.contact-btn {
+  transition: 0.3s ease;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+/* عند مرور الماوس */
+.contact-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  opacity: 0.95;
+}
+
+/* تأثير خاص للاتصال */
+.contact-btn.call:hover {
+  background-color: #7a5656;
+}
+
+/* تأثير خاص للواتساب */
+.contact-btn.whatsapp:hover {
+  background-color: #1ebe5d;
+}

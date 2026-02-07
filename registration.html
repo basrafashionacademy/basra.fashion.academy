@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الكورس | أكاديمية تصميم الأزياء</title>
+<style>
+body { font-family: Tahoma, Arial; background:#f7f4f2; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+.register-container { background:#fff; padding:30px 40px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); width:400px; text-align:center; }
+h2 { margin-bottom:20px; color:#5a3d3d; }
+form { display:flex; flex-direction:column; gap:15px; }
+input, select { padding:10px; border:1px solid #ccc; border-radius:8px; font-size:16px; }
+button { padding:12px; border:none; border-radius:25px; background-color:#5a3d3d; color:white; font-size:16px; cursor:pointer; transition:0.3s; }
+button:hover { background-color:#7a5656; transform:scale(1.03); }
+.back-link { margin-top:15px; font-size:14px; color:#3b2c2c; }
+.back-link a { color:#5a3d3c; text-decoration:none; }
+.back-link a:hover { text-decoration:underline; }
+@media (max-width:480px){ .register-container{width:90%;padding:20px;} }
+</style>
+</head>
+<body>
+
+<div class="register-container">
+  <h2>تسجيل الكورس</h2>
+  <form id="courseForm" onsubmit="return registerCourse(event)">
+    <input type="text" id="name" placeholder="الاسم الكامل" required>
+    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+    <select id="course" required>
+      <option value="">اختر الكورس</option>
+      <option value="تصميم الأزياء">دورة تصميم الأزياء</option>
+      <option value="خياطة متقدمة">دورة الخياطة المتقدمة</option>
+      <option value="رسم أزياء">دورة رسم الأزياء</option>
+      <option value="باترون">دورة باترون</option>
+    </select>
+    <button type="submit">تسجيل الآن</button>
+  </form>
+  <p class="back-link">
+    <a href="BasraFashionAcademy.html">⬅ العودة للصفحة الرئيسية</a>
+    <br>
+    <a href="admin.html">👁️ دخول المدير</a>
+  </p>
+</div>
+
+<script>
+function registerCourse(event){
+  event.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const course = document.getElementById("course").value;
+  if(!name  !email  !phone || !course){ alert("❌ الرجاء تعبئة جميع الحقول"); return false; }
+
+  let registrations = JSON.parse(localStorage.getItem("registrations") || "[]");
+  registrations.push({ name, email, phone, course });
+  localStorage.setItem("registrations", JSON.stringify(registrations));
+  localStorage.setItem("lastRegistration", JSON.stringify({ name, course }));
+
+  window.location.href = "success.html";
+}
+</script>
+
+</body>
+</html>
